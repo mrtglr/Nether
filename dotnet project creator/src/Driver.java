@@ -16,6 +16,7 @@ public class Driver extends JFrame{
 	static String folder_path;
 	static String project_name;
 	static String project_type;
+	static JLabel title;
 	
 	Driver() {
 		
@@ -37,7 +38,7 @@ public class Driver extends JFrame{
 	    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 	    chooser.setAcceptAllFileFilterUsed(false);
 	    
-		JLabel title = new JLabel();
+		title = new JLabel();
 		title.setText("create new dotnet project");
 		title.setFont(new java.awt.Font("Arial Black", Font.BOLD, 15));
 		title.setBounds(50, 20, 450, 20);
@@ -85,116 +86,8 @@ public class Driver extends JFrame{
 
 		project_types_comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				String selectedColor = (String) project_types_comboBox.getSelectedItem();
-
-				if (selectedColor.equals("console")) {
-					title.setText("create new dotnet console project");
-					project_type = "console";
-				}
-				if (selectedColor.equals("classlib")) {
-					title.setText("create new dotnet classlib project");
-					project_type = "classlib";
-				}
-				if (selectedColor.equals("wpf")) {
-					title.setText("create new dotnet wpf project");
-					project_type = "wpf";
-				}
-				if (selectedColor.equals("wpflib")) {
-					title.setText("create new dotnet wpflib project");
-					project_type = "wpflib";
-				}
-				if (selectedColor.equals("wpfcustomcontrollib")) {
-					title.setText("create new dotnet wpfcustomcontrollib project");
-					project_type = "wpfcustomcontrollib";
-				}
-				if (selectedColor.equals("wpfusercontrollib")) {
-					title.setText("create new dotnet wpfusercontrollib project");
-					project_type = "wpfusercontrollib";
-				}
-				if (selectedColor.equals("winforms")) {
-					title.setText("create new dotnet winforms project");
-					project_type = "winforms";
-				}
-				if (selectedColor.equals("winformslib")) {
-					title.setText("create new dotnet winformslib project");
-					project_type = "winformslib";
-				}
-				if (selectedColor.equals("worker")) {
-					title.setText("create new dotnet worker project");
-					project_type = "worker";
-				}
-				if (selectedColor.equals("mstest")) {
-					title.setText("create new dotnet mstest project");
-					project_type = "mstest";
-				}
-				if (selectedColor.equals("nunit")) {
-					title.setText("create new dotnet nunit project");
-					project_type = "nunit";
-				}
-				if (selectedColor.equals("xunit")) {
-					title.setText("create new dotnet xunit project");
-					project_type = "xunit";
-				}
-				if (selectedColor.equals("page")) {
-					title.setText("create new dotnet page project");
-					project_type = "page";
-				}
-				if (selectedColor.equals("viewimports")) {
-					title.setText("create new dotnet viewimports project");
-					project_type = "viewimports";
-				}
-				if (selectedColor.equals("blazorserver")) {
-					title.setText("create new dotnet blazorserver project");
-					project_type = "blazorserver";
-				}
-				if (selectedColor.equals("blazorwasm")) {
-					title.setText("create new dotnet blazorwasm project");
-					project_type = "blazorwasm";
-				}
-				if (selectedColor.equals("web")) {
-					title.setText("create new dotnet web project");
-					project_type = "web";
-				}
-				if (selectedColor.equals("mvc")) {
-					title.setText("create new dotnet mvc project");
-					project_type = "mvc";
-				}
-				if (selectedColor.equals("webapp")) {
-					title.setText("create new dotnet webapp project");
-					project_type = "webapp";
-				}
-				if (selectedColor.equals("angular")) {
-					title.setText("create new dotnet angular project");
-					project_type = "angular";
-				}
-				if (selectedColor.equals("react")) {
-					title.setText("create new dotnet react project");
-					project_type = "react";
-				}
-				if (selectedColor.equals("reactredux")) {
-					title.setText("create new dotnet reactredux project");
-					project_type = "reactredux";
-				}
-				if (selectedColor.equals("razorclasslib")) {
-					title.setText("create new dotnet razorclasslib project");
-					project_type = "razorclasslib";
-				}
-				if (selectedColor.equals("webapi")) {
-					title.setText("create new dotnet webapi project");
-					project_type = "webapi";
-				}
-				if (selectedColor.equals("grpc")) {
-					title.setText("create new dotnet grpc project");
-					project_type = "grpc";
-				}
-				if (selectedColor.equals("globaljson")) {
-					title.setText("create new dotnet globaljson project");
-					project_type = "globaljson";
-				}
-				if (selectedColor.equals("proto")) {
-					title.setText("create new dotnet proto project");
-					project_type = "proto";
-				}
+				String selectedType = (String) project_types_comboBox.getSelectedItem();
+				projectTypeSelector(selectedType);
 			}
 		});
 		
@@ -253,6 +146,12 @@ public class Driver extends JFrame{
 			 }
 		});	
 	}	
+
+	public static void projectTypeSelector(String selectedType) {
+
+		title.setText("create new dotnet " + selectedType + " project");
+		project_type = selectedType;
+	}
 		
 	public static void main(String[] args) {
 		
